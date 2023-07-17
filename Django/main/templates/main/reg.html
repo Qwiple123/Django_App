@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+
+
+
+
+<body>
+
+	
+  
+<h2 style="margin-left: 20px;">Sign up</h2>
+
+<script>
+	function click(){
+		alert("Еблан")
+	}
+</script>
+
+ <form method="POST" style="margin-left: 20px;">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+
+

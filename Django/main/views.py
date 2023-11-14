@@ -119,12 +119,13 @@ def delete_test(request,test_id):
 
      
 def register_request(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			return redirect("main:homepage")
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        print(form.is_valid())
+        if form.is_valid():
+            user = form.save()
+            return redirect("main:homepage")
 
 
-	form = NewUserForm()
-	return render (request=request, template_name="main/reg.html", context={"form":form})
+    form = NewUserForm()
+    return render (request=request, template_name="main/reg.html", context={"form":form})

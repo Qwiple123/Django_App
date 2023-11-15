@@ -1,28 +1,66 @@
+
+<style>
+
+*{
+    font-family:sans-serif;
+
+    
+}
+a{
+    text-decoration: none;
+}
+
+body{
+    background-image: linear-gradient(#6e4aff, #49A16C);
+}
+.wrapper{
+   margin-left: 20px;
+   margin-top: 50px;
+  
+}
+
+.test-title{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 3em;
+    
+}
+
+.test-text{
+    color: black;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+
+
+
+</style>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Тесты</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-    <style>
-        *{
-            font-family:sans-serif;
-        }
-    </style>
-    <div style="font-size: 35px;">
-        <a href="/create">Создать тест</a>
+    <div class="wrapper">
+    <a class="test-title" href="/create">Создать тест</a>
+  
+    <div class="tests">
+        {% for test in tests%}
+        {%if test.is_deleted%}
+        <p class="test-text"></p>
     </div>
-    {% for test in tests%}
-    {%if test.is_deleted%}
-    <p></p>
     {%else%}
-    <div style="padding: 12px;">
-        <a style="font-size: 30px;" href="{{test.id}}/">Название: {{ test.title }}</a>
+    <div>
+        <a class="test-text" href="{{test.id}}/">{{ test.title }}</a>
     </div>
     {%endif%}
     {%endfor%}
 </body>
+</div>
 </html>

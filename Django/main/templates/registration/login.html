@@ -1,18 +1,59 @@
+
+<style>
+  body{
+    background-image: linear-gradient(#6e4aff, #49A16C);
+  }
+  .form{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+
+
+    
+
+  }
+  .form-button{
+    min-width: 190px;
+    background-color: forestgreen;
+  }
+  .form-title{
+    margin-bottom: 15px;
+  }
+  .form-form{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -125px;
+    
+
+  }
+</style>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Авторизация</title>
 </head>
 <body>
-    <h2>Log In</h2>
+  <div class="form">
+    <div class="form-form">
+    <h2 class="form-title">Авторизация</h2>
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Log In</button>
+  <button type="submit" class="form-button">Войти</button>
 </form>
+</div>
+</div>
     
 </body>
 </html>

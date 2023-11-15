@@ -1,3 +1,67 @@
+<style>
+p,a,li,input{
+    font-size: 1em;
+    font-weight:bold;
+
+}
+
+*{
+    font-family:sans-serif;
+    }
+  body{
+   background-image: linear-gradient(#6e4aff, #49A16C);
+  }
+  .wrapper{
+   margin-top: 100px;
+   font-size: 1.5em;
+  }
+  h2{
+   text-align: center;
+   margin-left: 20px;
+
+  }
+  form{
+    padding-left: 15px;
+   
+ }
+ .form{
+    padding-left: 15px;
+   
+ }
+ .apply-button{
+    margin-left: 70px;
+   margin-bottom: 10px;
+   min-width: 170px;
+   background-color: forestgreen;
+ }
+ .form-button{
+    margin-bottom: 10px;
+   min-width: 170px;
+   background-color: forestgreen;
+ }
+ small{
+   color: black;
+ }
+ .test_name{
+    padding-left: 15px;
+    font-size: 1.5em;
+ }
+ .test-title{
+    color: whitesmoke;
+    text-decoration: none;
+    padding-left: 15px;
+    font-size: 3em;
+    
+}
+ .test-text{
+    color: black;
+    text-decoration: none;
+    padding-left: 15px;
+    font-size: 2em;
+}
+ 
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,32 +69,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Создание теста</title>
 </head>
-<style>
-p,a,li,input{
-    font-size: 30px;
-
-}
-body{
-    margin: 0;
-    padding: 20px;
-}
-*{
-            font-family:sans-serif;
-        }
-</style>
 
 <body>
-    <div style="padding: 20px;"></div>
-   <p>Название теста:  <input style="font-size: 46px;" class="test_name"  value="{{test.title}}"></input></p>
+   <p class="test_name">Название теста:  <input  class="test_name"  value="{{test.title}}"></input></p>
    {%for question in questions%}
-    <p style="font-size: 30px; margin-left: 15px;">Вопрос: <input id="{{question.id}}" class="question_text"  value="{{question.text}}"></p>
+   <div class="form">
+    <p class="question_text">Вопрос: <input id="{{question.id}}" class="question_text"  value="{{question.text}}"></p>
     
     {%for q in answers.items%}
     {% if q.0 == question.text %}   
     {%for k in q.1%}
-    <p style="margin-left: 35px;">Ответ: <input value="{{k.text}}" class="answer_text" id="{{k.id}}"></input>
+    <p class="answer_text">Ответ: <input value="{{k.text}}" class="answer_text" id="{{k.id}}"></input>
     
     {% if k.is_correct%}
     <input type="checkbox" class="answer_is_correct" id="{{k.id}}" value="{{k.is_correct}}" checked></input></p>
@@ -42,43 +93,43 @@ body{
     {%endif%}
   {%endfor%}
   <div>
-    <button type="submit" onclick="result()">Применить</button>
+    <button class="apply-button" type="submit" onclick="result()">Применить</button>
   </div>
 
 
 
    
-    <div style="padding: 20px;">
-        <form action="{% url 'create_answer' test.id question.id%}" method="POST" style="margin-left: 20px;">
+    <div>
+        <form action="{% url 'create_answer' test.id question.id%}" method="POST">
             {% csrf_token %}
            {{ create_answer }}
-            <button type="submit">Создать ответ</button>
+            <button type="submit" class="form-button">Создать ответ</button>
             </form>
         </div>
 </div>
 <div>
    {%endfor%}
-   <form action="{% url 'create_question' test.id%}" method="POST" style="margin-left: 20px;">
+   <form action="{% url 'create_question' test.id%}" method="POST">
     {% csrf_token %}
    {{ create_question }}
-   <button type="submit">Создать вопрос</button>
+   <button type="submit" class="form-button">Создать вопрос</button>
     </form>
 </div>
 
 
 
    <!-- {{ create_answer}} -->
-   <div style="margin-top: 50px;">
+   <div>
     <div>
-        <a style="font-size: 30px;" href="/create">Создать новый тест</a>
+        <a class="test-title" href="/create">Создать новый тест</a>
     </div>
-    <a style="font-size: 30px;" href="/delete_test/{{test.id}}">Удалить этот тест</a>
+    <a class="test-title" href="/delete_test/{{test.id}}">Удалить этот тест</a>
    </div>
 
    <div>
-    <a style="font-size: 30px;" href="/">Главная</a>
+    <a class="test-title" href="/">Главная</a>
    </div>
-   
+</div>
 </body>
 
 <script>

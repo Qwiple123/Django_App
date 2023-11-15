@@ -1,10 +1,42 @@
+<style>
+   body{
+    background-image: linear-gradient(#6e4aff, #49A16C);
+   }
+   .wrapper{
+    margin-top: 100px;
+    font-size: 1.5em;
+   }
+   h2{
+    text-align: center;
+    margin-left: 20px;
+
+   }
+   form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 10em
+    
+  }
+  .form-button{
+    min-width: 190px;
+    background-color: forestgreen;
+  }
+  small{
+    color: black;
+  }
+
+  
+</style>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Регистрация</title>
 </head>
 
 
@@ -12,13 +44,13 @@
 
 
 <body>
+  <div class="wrapper">
+  <h2>Регистрация</h2>
+	<div class="form">
+    <div class="form-form">
 
-	
-  
-<h2 style="margin-left: 20px;">Sign up</h2>
 
-
- <form method="POST" style="margin-left: 20px;">
+ <form method="POST">
     {% csrf_token %}
     {% for field in form %}
       <p>
@@ -32,10 +64,12 @@
         {% endfor %}
       </p>
     {% endfor %}
-    <button type="submit">Sign up</button>
+    <button type="submit" class="form-button">Зарегистрироваться</button>
   </form>
+</div>
 
-
+</div>
+</div>
 
 
 
@@ -43,7 +77,18 @@
 </body>
 
 
+<script>
+  var smalls = document.querySelectorAll('small');
+  var lies = document.querySelectorAll('li');
+  smalls.forEach(element => {
+    element.hidden = true;
+    
+  });
+  lies.forEach(element=>{
+  element.hidden = true;
 
+  });
+</script>
 </html>
 
 

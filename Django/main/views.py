@@ -124,7 +124,7 @@ def register_request(request):
         print(form.is_valid())
         if form.is_valid():
             user = form.save()
-            return redirect("main:homepage")
+            return redirect("accounts/login/")
 
 
     form = NewUserForm()
